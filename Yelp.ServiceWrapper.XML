@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Yelp.ServiceWrapper</name>
+    </assembly>
+    <members>
+        <member name="T:Yelp.ServiceWrapper.Adapters.BaseAdapter">
+            <summary>
+            BaseAdapter: Generates WebRequest and WebResponse
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.BaseAdapter.#ctor(Yelp.ServiceWrapper.Requests.BaseRequest)">
+            <summary>
+            Constructor: intializes the _request object.
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.BaseAdapter.CallYelp(System.String)">
+            <summary>
+            CallYelp: calls the Yelp Web API v2
+            </summary>
+            <param name="apiPath">string: the selected api path</param>
+            <returns>JObject: JSON object returned from the Yelp Web API</returns>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.BaseAdapter.Dispose">
+            <summary>
+            Dispose: dispose method
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Adapters.BusinessAdapter">
+            <summary>
+            BusinessAdapter: specific to the Yelp Business Web API
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.BusinessAdapter.#ctor(Yelp.ServiceWrapper.Requests.BusinessRequest)">
+            <summary>
+            Constructor: intializes the _businessId object.
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.BusinessAdapter.GetYelpBusinessResults">
+            <summary>
+            GetYelpBusinessResults: Gets the results from the Yelp Business Web API
+            </summary>
+            <returns>BaseResponse: the response object</returns>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Adapters.SearchAdapter">
+            <summary>
+            SearchAdapter: specific to the Yelp Search Web API
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.SearchAdapter.#ctor(Yelp.ServiceWrapper.Requests.SearchRequest)">
+            <summary>
+            Constructor: builds the query string parameter for the request
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Adapters.SearchAdapter.GetYelpSearchResults">
+            <summary>
+            GetYelpSearchResults: Gets the results from the Yelp Search Web API
+            </summary>
+            <returns>BaseResponse: the response object</returns>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Constants.ApiConfigurationSettings">
+            <summary>
+            ApiConfigurationSettings: Yelp specific constants
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Models.BoundsModel">
+            <summary>
+            bounds=sw_latitude,sw_longitude|ne_latitude,ne_longitude
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Models.BoundsModel.CreateQueryStringParamter">
+            <summary>
+            CreateQueryStringParamter: Creates a querystring parameter
+            </summary>
+            <returns>Dictionary: the key value pair of the querystring porameter</returns>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Models.GeoCoordinatesModel">
+            <summary>
+            ll=latitude,longitude,accuracy,altitude,altitude_accuracy
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Models.GeoCoordinatesModel.CreateQueryStringParamter">
+            <summary>
+            CreateQueryStringParamter: Creates a querystring parameter
+            </summary>
+            <returns>Dictionary: the key value pair of the querystring porameter</returns>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Models.LocationModel.Address">
+            <summary>
+            Specifies the combination of "address, neighborhood, city, state or zip, optional country" to be used when searching for businesses.
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Models.LocationCoordinates">
+            <summary>
+            cll=latitude,longitude
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Models.LocationCoordinates.CreateQueryStringParamter">
+            <summary>
+            CreateQueryStringParamter: Creates a querystring parameter
+            </summary>
+            <returns>Dictionary: the key value pair of the querystring porameter</returns>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Requests.BaseRequest">
+            <summary>
+            BaseRequest: the base request object
+            </summary>
+        </member>
+        <member name="M:Yelp.ServiceWrapper.Requests.BaseRequest.#ctor">
+            <summary>
+            Constructor: initializes the QueryParametrs object
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.BaseRequest.ConsumerSecret">
+            <summary>
+            ConsumerSecret: string, Yelp account configuration setting: ConsumerSecret.
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.BaseRequest.ConsumerKey">
+            <summary>
+            ConsumerKey: string, Yelp account configuration setting: ConsumerKey.
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.BaseRequest.Token">
+            <summary>
+            Token: string, Yelp account configuration setting: Token.
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.BaseRequest.TokenSecret">
+            <summary>
+            TokenSecret: string, Yelp account configuration setting: TokenSecret.
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.BaseRequest.QueryParameters">
+            <summary>
+            QueryParameters: Dictionary, key values pairs of the QueryString parameters.
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Requests.BusinessRequest">
+            <summary>
+            BusinessRequest: the Yelp Web API Business Request object
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.BusinessRequest.BusinessId">
+            <summary>
+            BusinessId: string, the id of the business (usually obtained via a Search Request)
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Requests.SearchRequest">
+            <summary>
+            SearchRequest: the Yelp Web API Search Request object
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.Term">
+            <summary>
+            Term: Search term (e.g. "food", "restaurants"). If term isn’t included we search everything.
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.Limit">
+            <summary>
+            Limit: Number of business results to return
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.OffSet">
+            <summary>
+            Offset: Offset the list of returned business results by this amount
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.Sort">
+            <summary>
+            Sort: Sort mode: 0=Best matched (default), 1=Distance, 2=Highest Rated
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.CategoryFilter">
+            <summary>
+            CategoryFilter: see https://www.yelp.com/developers/documentation/v2/all_category_list
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.RadiusFilter">
+            <summary>
+            RadiusFilter:  Search radius in meters. If the value is too large, a AREA_TOO_LARGE error may be returned. The max value is 40000 meters (25 miles).
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.CC">
+            <summary>
+            CC: country code, see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.Lang">
+            <summary>
+            Lang: language, see http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.DealsFilter">
+            <summary>
+            DealsFilter: bool, Whether to exclusively search for businesses with deals
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.GeoCoordinates">
+            <summary>
+            GeoCoordinatesModel: contains querystring parmaters related to GeoCoordinates
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.Location">
+            <summary>
+            LocationModel: contains querystring parmaters related to Location
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Requests.SearchRequest.Bounds">
+            <summary>
+            Bounds: contains querystring parmaters related to Bounds
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Responses.BaseResponse">
+            <summary>
+            BaseResponse: the base response object
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Responses.BaseResponse.Success">
+            <summary>
+            Success: bool, indicating the state of the transaction
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Responses.BaseResponse.ErrorMessage">
+            <summary>
+            ErrorMessage: string, the error message that occurs during the Yelp Service call
+            </summary>
+        </member>
+        <member name="P:Yelp.ServiceWrapper.Responses.BaseResponse.YelpData">
+            <summary>
+            YelpData: Json data returned from Yelp
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Responses.BusinessResponse">
+            <summary>
+            BusinessResponse: the business response object
+            </summary>
+        </member>
+        <member name="T:Yelp.ServiceWrapper.Responses.SearchResponse">
+            <summary>
+            SearchResponse: the search response object
+            </summary>
+        </member>
+    </members>
+</doc>
